@@ -1,61 +1,61 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+    <modelVersion>4.0.0</modelVersion>
 
-  <groupId>io.github.yuokada</groupId>
-  <artifactId>presto-sample-udf</artifactId>
-  <version>1.0-SNAPSHOT</version>
-  <!-- <packaging>jar</packaging> -->
+    <groupId>io.github.yuokada</groupId>
+    <artifactId>presto-sample-udf</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <!-- <packaging>jar</packaging> -->
 
-  <name>presto-sample-udf</name>
-  <url>http://maven.apache.org</url>
+    <name>presto-sample-udf</name>
+    <url>http://maven.apache.org</url>
 
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <presto.version>0.180</presto.version>
-    <slice.version>0.15</slice.version>
-    <guava.version>21.0</guava.version>
-    <io.airlift.log.version>0.125</io.airlift.log.version>
-    <maven.compiler.source>1.8</maven.compiler.source>
-    <maven.compiler.target>1.8</maven.compiler.target>
-  </properties>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <presto.version>0.180</presto.version>
+        <slice.version>0.15</slice.version>
+        <guava.version>21.0</guava.version>
+        <io.airlift.log.version>0.125</io.airlift.log.version>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+    </properties>
 
-  <dependencies>
-    <dependency>
-      <groupId>com.facebook.presto</groupId>
-      <artifactId>presto-spi</artifactId>
-      <version>${presto.version}</version>
-    </dependency>
+    <dependencies>
+        <dependency>
+            <groupId>com.facebook.presto</groupId>
+            <artifactId>presto-spi</artifactId>
+            <version>${presto.version}</version>
+        </dependency>
 
-    <dependency>
-      <groupId>com.facebook.presto</groupId>
-      <artifactId>presto-main</artifactId>
-      <version>${presto.version}</version>
-    </dependency>
+        <dependency>
+            <groupId>com.facebook.presto</groupId>
+            <artifactId>presto-main</artifactId>
+            <version>${presto.version}</version>
+        </dependency>
 
-    <dependency>
-      <groupId>io.airlift</groupId>
-      <artifactId>slice</artifactId>
-      <version>${slice.version}</version>
-    </dependency>
+        <dependency>
+            <groupId>io.airlift</groupId>
+            <artifactId>slice</artifactId>
+            <version>${slice.version}</version>
+        </dependency>
 
-    <dependency>
-      <groupId>com.google.guava</groupId>
-      <artifactId>guava</artifactId>
-      <version>${guava.version}</version>
-    </dependency>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>${guava.version}</version>
+        </dependency>
 
-    <dependency>
-      <groupId>io.airlift</groupId>
-      <artifactId>log</artifactId>
-      <version>${io.airlift.log.version}</version>
-    </dependency>
+        <dependency>
+            <groupId>io.airlift</groupId>
+            <artifactId>log</artifactId>
+            <version>${io.airlift.log.version}</version>
+        </dependency>
 
-    <!-- For Unittest -->
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>3.8.1</version>
-      <scope>test</scope>
-    </dependency>
-  </dependencies>
+        <!-- For Unittest -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
 </project>
