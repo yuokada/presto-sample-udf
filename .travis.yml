@@ -1,0 +1,12 @@
+language: java
+# branches:
+#   only:
+#     - master
+sudo: false
+jdk:
+  - oraclejdk8
+# see: https://docs.travis-ci.com/user/caching/
+cache:
+  directories:
+  - .autoconf
+  - $HOME/.m2
