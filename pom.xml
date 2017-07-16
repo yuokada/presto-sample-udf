@@ -4,6 +4,8 @@
     <groupId>io.github.yuokada</groupId>
     <artifactId>presto-sample-udf</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <description>Presto - Example UDF Plugin</description>
+
     <!-- <packaging>jar</packaging> -->
 
     <name>presto-sample-udf</name>
@@ -12,7 +14,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <presto.version>0.180</presto.version>
-        <slice.version>0.15</slice.version>
+        <slice.version>0.22</slice.version>
         <guava.version>21.0</guava.version>
         <io.airlift.log.version>0.125</io.airlift.log.version>
         <maven.compiler.source>1.8</maven.compiler.source>
@@ -24,6 +26,7 @@
             <groupId>com.facebook.presto</groupId>
             <artifactId>presto-spi</artifactId>
             <version>${presto.version}</version>
+            <scope>provided</scope>
         </dependency>
 
         <dependency>
@@ -52,9 +55,24 @@
 
         <!-- For Unittest -->
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.12</version>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>6.9.10</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.facebook.presto</groupId>
+            <artifactId>presto-tests</artifactId>
+            <version>${presto.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.facebook.presto</groupId>
+            <artifactId>presto-main</artifactId>
+            <version>${presto.version}</version>
+            <type>test-jar</type>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -74,7 +92,7 @@
                             <configLocation>src/checkstyle/checks.xml</configLocation>
                             <encoding>UTF-8</encoding>
                             <consoleOutput>true</consoleOutput>
-                            <!--<failsOnError>false</failsOnError>-->
+                            <failsOnError>true</failsOnError>
                         </configuration>
                         <goals>
                             <goal>check</goal>
@@ -82,7 +100,6 @@
                     </execution>
                 </executions>
             </plugin>
-
 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -108,14 +125,14 @@
                                 </includes>
                             </artifactSet>
                             <!--<relocations>-->
-                                <!--<relocation>-->
-                                    <!--<pattern>com.google</pattern>-->
-                                    <!--<shadedPattern>com.google.shaded</shadedPattern>-->
-                                <!--</relocation>-->
-                                <!--<relocation>-->
-                                    <!--<pattern>io.airlift.log</pattern>-->
-                                    <!--<shadedPattern>io.airlift.log.shaded</shadedPattern>-->
-                                <!--</relocation>-->
+                            <!--<relocation>-->
+                            <!--<pattern>com.google</pattern>-->
+                            <!--<shadedPattern>com.google.shaded</shadedPattern>-->
+                            <!--</relocation>-->
+                            <!--<relocation>-->
+                            <!--<pattern>io.airlift.log</pattern>-->
+                            <!--<shadedPattern>io.airlift.log.shaded</shadedPattern>-->
+                            <!--</relocation>-->
                             <!--</relocations>-->
 
                         </configuration>

@@ -1,35 +1,42 @@
 package io.github.yuokada.presto.udf.scalar;
 
-import io.airlift.slice.Slices;
-import junit.framework.TestCase;
-import org.junit.Assert;
-import org.junit.Test;
+import com.facebook.presto.operator.scalar.FunctionAssertions;
+import com.facebook.presto.spi.type.Type;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
 
-import static org.hamcrest.CoreMatchers.is;
+import static com.facebook.presto.spi.type.VarcharType.VARCHAR;
 
 /**
  * Unit test for UDF.
  */
 public class HelloWorldUDFTest
-        extends TestCase
 {
-    /**
-     * Create the test case
-     *
-     * @param testName name of the test case
-     */
-    public HelloWorldUDFTest(String testName)
+
+    private FunctionAssertions functionAssertions;
+
+    @BeforeClass
+    public void setUp()
     {
-        super(testName);
+        functionAssertions = new FunctionAssertions().addScalarFunctions(HelloWorldUDF.class);
     }
 
     @Test
     public void testHelloWorld()
             throws Exception
     {
-        Assert.assertThat(HelloWorldUDF.helloworld(null).toStringUtf8(), is("Hello World"));
+        assertFunction("hello_world('')", VARCHAR, "Hello World");
+    }
 
-        Assert.assertThat(HelloWorldUDF.helloworld(Slices.utf8Slice("Joe")).
-                toStringUtf8(), is("Hello Joe"));
+    @Test
+    public void testHelloJohn()
+            throws Exception
+    {
+        assertFunction("hello_world('John')", VARCHAR, "Hello John");
+    }
+
+    private void assertFunction(String projection, Type expectedType, Object expected)
+    {
+        functionAssertions.assertFunction(projection, expectedType, expected);
     }
 }
