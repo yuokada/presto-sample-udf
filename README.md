@@ -26,8 +26,8 @@ Copy jar file to plugin dir. And, you restart presto server.
    
 ## Examples
 
-- [prestodb\-rocks/presto\-example\-udf: An example implentantion of Presto UDF functions](https://github.com/prestodb-rocks/presto-example-udf)
+- [prestodb\-rocks/presto\-example\-udf: An example implentantion of Presto UDF functions](https://github.com/prestodb-rocks/presto-example-udf)  
   Basic UDF sample code and unittest.
 - [aaronshan/presto\-third\-functions: Some useful presto custom udf functions](https://github.com/aaronshan/presto-third-functions)
-- [qubole/presto\-udfs: Plugin for Presto to allow addition of user functions easily](https://github.com/qubole/presto-udfs)
+- [qubole/presto\-udfs: Plugin for Presto to allow addition of user functions easily](https://github.com/qubole/presto-udfs)  
   Various UDF Sample Repository.
