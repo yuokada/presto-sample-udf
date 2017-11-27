@@ -1,7 +1,6 @@
 package io.github.yuokada.presto.udf.scalar;
 
-import com.facebook.presto.operator.scalar.FunctionAssertions;
-import com.facebook.presto.spi.type.Type;
+import com.facebook.presto.operator.scalar.AbstractTestFunctions;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -11,14 +10,13 @@ import static com.facebook.presto.spi.type.VarcharType.VARCHAR;
  * Unit test for UDF.
  */
 public class HelloWorldUDFTest
+        extends AbstractTestFunctions
 {
-
-    private FunctionAssertions functionAssertions;
 
     @BeforeClass
     public void setUp()
     {
-        functionAssertions = new FunctionAssertions().addScalarFunctions(HelloWorldUDF.class);
+        registerScalar(HelloWorldUDF.class);
     }
 
     @Test
@@ -33,10 +31,5 @@ public class HelloWorldUDFTest
             throws Exception
     {
         assertFunction("hello_world('John')", VARCHAR, "Hello John");
-    }
-
-    private void assertFunction(String projection, Type expectedType, Object expected)
-    {
-        functionAssertions.assertFunction(projection, expectedType, expected);
     }
 }
