@@ -75,6 +75,18 @@
             <type>test-jar</type>
             <scope>test</scope>
         </dependency>
+
+        <!-- kuromoji UDF -->
+        <dependency>
+            <groupId>com.atilika.kuromoji</groupId>
+            <artifactId>kuromoji-core</artifactId>
+            <version>0.9.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.atilika.kuromoji</groupId>
+            <artifactId>kuromoji-ipadic</artifactId>
+            <version>0.9.0</version>
+        </dependency>
     </dependencies>
 
     <build>
