@@ -16,7 +16,7 @@
         <presto.version>0.188</presto.version>
         <slice.version>0.32</slice.version>
         <guava.version>21.0</guava.version>
-        <io.airlift.log.version>0.125</io.airlift.log.version>
+        <io.airlift.log.version>0.163</io.airlift.log.version>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
