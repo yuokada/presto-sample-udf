@@ -11,6 +11,9 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="Maven: io.airlift:log:0.125" level="project" />
+    <orderEntry type="library" name="com.atilika.kuromoji:kuromoji-core:0.9.0" level="project" />
+    <orderEntry type="library" name="com.atilika.kuromoji:kuromoji-ipadic:0.9.0" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: com.facebook.presto:presto-spi:0.188" level="project" />
     <orderEntry type="library" name="Maven: io.airlift:units:1.0" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.8.1" level="project" />
@@ -137,7 +140,7 @@
     <orderEntry type="library" name="Maven: com.sun.xml.bind:jaxb-impl:2.2.6" level="project" />
     <orderEntry type="library" name="Maven: io.airlift:slice:0.32" level="project" />
     <orderEntry type="library" name="Maven: com.google.guava:guava:21.0" level="project" />
-    <orderEntry type="library" name="Maven: io.airlift:log:0.125" level="project" />
+    <orderEntry type="library" name="Maven: io.airlift:log:0.163" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.testng:testng:6.9.10" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: com.beust:jcommander:1.48" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.beanshell:bsh:2.0b4" level="project" />
@@ -150,5 +153,7 @@
     <orderEntry type="library" scope="TEST" name="Maven: org.jdbi:jdbi:2.78" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: com.h2database:h2:1.4.196" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: com.facebook.presto:presto-main:test-jar:tests:0.188" level="project" />
+    <orderEntry type="library" name="Maven: com.atilika.kuromoji:kuromoji-core:0.9.0" level="project" />
+    <orderEntry type="library" name="Maven: com.atilika.kuromoji:kuromoji-ipadic:0.9.0" level="project" />
   </component>
 </module>
