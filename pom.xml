@@ -21,6 +21,12 @@
         <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
 
+    <scm>
+        <connection>scm:git:https://github.com/yuokada/presto-sample-udf.git</connection>
+        <url>https://github.com/yuokada/presto-sample-udf</url>
+        <tag>HEAD</tag>
+    </scm>
+
     <dependencies>
         <dependency>
             <groupId>com.facebook.presto</groupId>
