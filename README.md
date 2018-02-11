@@ -11,6 +11,9 @@ Sample UDF Plugin for Presto
 ## Build
 
 ```bash
+# if mac os
+% export JAVA_HOME=`/System/Library/Frameworks/JavaVM.framework/Versions/A/Commands/java_home -v "1.8"`
+
 % ./mvnw clean compile package
 ```
    
