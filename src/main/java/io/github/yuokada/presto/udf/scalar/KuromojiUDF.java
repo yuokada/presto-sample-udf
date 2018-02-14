@@ -19,6 +19,9 @@ import static io.airlift.slice.Slices.utf8Slice;
 
 public class KuromojiUDF
 {
+
+    private final static Tokenizer tokenizer = new Tokenizer();
+
     @Description("Now Working.")
     @ScalarFunction("kuromoji_tokenize")
     @LiteralParameters("x")
@@ -30,7 +33,6 @@ public class KuromojiUDF
         }
 
         String input = sentence.toStringUtf8();
-        Tokenizer tokenizer = new Tokenizer();
         List<Token> tokens = tokenizer.tokenize(input);
 
         BlockBuilder blockBuilder = VARCHAR.createBlockBuilder(new BlockBuilderStatus(), 32);
