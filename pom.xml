@@ -140,6 +140,8 @@
                                 <!-- dont need to add airlift.slice, presto provides it to all plugins -->
                                 <includes>
                                     <include>com.google.guava:guava</include>
+                                    <include>com.atilika.kuromoji:kuromoji-core</include>
+                                    <include>com.atilika.kuromoji:kuromoji-ipadic</include>
                                 </includes>
                             </artifactSet>
                             <!--<relocations>-->
