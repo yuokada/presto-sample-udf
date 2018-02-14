@@ -16,7 +16,7 @@ public class KuromojiUDFTest
         registerScalar(KuromojiUDF.class);
     }
 
-    @Test
+    @Test(threadPoolSize = 5, invocationCount = 10)
     public void testKuromojiNormal()
             throws Exception
     {
