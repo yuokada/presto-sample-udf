@@ -18,7 +18,9 @@ public class KuromojiUDFTest
     {
         return new Object[][] {
                 {"kuromoji_tokenize('5000兆円欲しい。')", 10,
-                 ImmutableList.of("5000", "兆", "円", "欲しい", "。")},
+                 ImmutableList.of("5000", "兆", "円", "欲しい")},
+                {"kuromoji_tokenize('一風堂のラーメンが食べたい。')", 14,
+                 ImmutableList.of("一風", "堂", "ラーメン", "食べる")},
                 };
     }
 
@@ -27,11 +29,11 @@ public class KuromojiUDFTest
     {
         return new Object[][] {
                 {"kuromoji_tokenize('5000兆円欲しい。', 'normal')", 10,
-                 ImmutableList.of("5000", "兆", "円", "欲しい", "。")},
+                 ImmutableList.of("5000", "兆", "円", "欲しい")},
                 {"kuromoji_tokenize('5000兆円欲しい。', 'search')", 10,
-                 ImmutableList.of("5000", "兆", "円", "欲しい", "。")},
+                 ImmutableList.of("5000", "兆", "円", "欲しい")},
                 {"kuromoji_tokenize('5000兆円欲しい。', 'extended')", 10,
-                 ImmutableList.of("兆", "円", "欲しい", "。", "5", "0", "0", "0")},
+                 ImmutableList.of("兆", "円", "欲しい")},
                 };
     }
 
@@ -47,7 +49,7 @@ public class KuromojiUDFTest
     {
         assertFunction("kuromoji_tokenize('5000兆円欲しい。')",
                 new ArrayType(VarcharType.createVarcharType(10)),
-                ImmutableList.of("5000", "兆", "円", "欲しい", "。"));
+                ImmutableList.of("5000", "兆", "円", "欲しい"));
     }
 
     @Test(dataProvider = "query-provider")
@@ -59,6 +61,22 @@ public class KuromojiUDFTest
 
     @Test(dataProvider = "query-provider2")
     public void testKuromojiNormalWithMode(String query, Integer size, List<String> expect)
+            throws Exception
+    {
+        assertFunction(query, new ArrayType(VarcharType.createVarcharType(size)), expect);
+    }
+
+    @DataProvider(name = "query-provider-dict")
+    public Object[][] dataProvider3()
+    {
+        return new Object[][] {
+                {"kuromoji_tokenize('一風堂のラーメンが食べたい。', 'normal', ARRAY['一風堂,一風堂,イップウドウ,名詞', '一蘭,一蘭,イチラン,名詞'] )", 14,
+                 ImmutableList.of("一風堂", "ラーメン", "食べる")},
+                };
+    }
+
+    @Test(invocationCount = 10, dataProvider = "query-provider-dict")
+    public void testKuromojiNormalWithMandD(String query, Integer size, List<String> expect)
             throws Exception
     {
         assertFunction(query, new ArrayType(VarcharType.createVarcharType(size)), expect);

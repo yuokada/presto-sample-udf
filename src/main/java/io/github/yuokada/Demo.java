@@ -14,8 +14,8 @@ import java.util.function.Predicate;
 
 public class Demo
 {
-
     public static void main(String[] args)
+            throws IOException
     {
         // https://qiita.com/masato_ka/items/2bae7f1e8ce245443947
 //        String input = "井口裕香ちゃんと一風堂のラーメンが食べたい";
@@ -34,12 +34,12 @@ public class Demo
                     .build();
         }
         catch (IOException e1) {
-
+            throw e1;
         }
         List<Token> tokens = tokenizer.tokenize(input);
 
-        List<String> PartOfSpeeches = Arrays.asList("助詞", "助動詞", "助動詞", "記号");
-        Predicate<Token> partFilter = x -> !(PartOfSpeeches.contains(x.getPartOfSpeechLevel1()));
+        List<String> partOfSpeeches = Arrays.asList("助詞", "助動詞", "助動詞", "記号");
+        Predicate<Token> partFilter = x -> !(partOfSpeeches.contains(x.getPartOfSpeechLevel1()));
         Function<Token, String> getSurface = (Token t) -> {
             if (t.getBaseForm().equals("*")) {
                 return t.getSurface().equals("/") ? "" : t.getSurface();
