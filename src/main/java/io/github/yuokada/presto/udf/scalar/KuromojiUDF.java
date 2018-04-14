@@ -60,12 +60,12 @@ public class KuromojiUDF
     @SqlType("array<varchar(x)>")
     public static Block kuromojiTokenize(@SqlNullable @SqlType("varchar(x)") Slice sentence)
     {
-        if (sentence == null || sentence.toStringUtf8().isEmpty()) {
+        String input = sentence.toStringUtf8();
+        if (sentence == null || input.isEmpty()) {
             return zeroBlock;
         }
 
-        String modeString = "normal";
-        return _kuromojiTokenize(sentence, modeString, zeroBlock);
+        return kuromojiTokenize(input, "normal", zeroBlock);
     }
 
     @ScalarFunction("kuromoji_tokenize")
@@ -78,10 +78,11 @@ public class KuromojiUDF
             throw new PrestoException(INVALID_FUNCTION_ARGUMENT, "Invalid mode value: " + modeString);
         }
 
-        if (sentence == null || sentence.toStringUtf8().isEmpty()) {
+        String input = sentence.toStringUtf8();
+        if (sentence == null || input.isEmpty()) {
             return zeroBlock;
         }
-        return _kuromojiTokenize(sentence, modeString, zeroBlock);
+        return kuromojiTokenize(input, modeString, zeroBlock);
     }
 
     @ScalarFunction("kuromoji_tokenize")
@@ -100,15 +101,15 @@ public class KuromojiUDF
             throw new PrestoException(INVALID_FUNCTION_ARGUMENT, "Invalid mode value: " + modeString);
         }
 
-        if (sentence == null || sentence.toStringUtf8().isEmpty()) {
+        String input = sentence.toStringUtf8();
+        if (sentence == null || input.isEmpty()) {
             return zeroBlock;
         }
-        return _kuromojiTokenize(sentence, modeString, arrayBlock);
+        return kuromojiTokenize(input, modeString, arrayBlock);
     }
 
-    private static Block _kuromojiTokenize(Slice sentence, String modeString, Block arrayBlock)
+    private static Block kuromojiTokenize(String input, String modeString, Block arrayBlock)
     {
-        String input = sentence.toStringUtf8();
         BlockBuilder blockBuilder = VARCHAR.createBlockBuilder(new BlockBuilderStatus(), input.length() / 4);
 
         Tokenizer tokenizer = getTokenizerWithMandD(modeString, arrayBlock);
