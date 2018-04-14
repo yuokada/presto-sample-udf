@@ -12,8 +12,6 @@ import com.facebook.presto.spi.function.LiteralParameters;
 import com.facebook.presto.spi.function.ScalarFunction;
 import com.facebook.presto.spi.function.SqlNullable;
 import com.facebook.presto.spi.function.SqlType;
-import com.facebook.presto.spi.function.TypeParameter;
-import com.facebook.presto.spi.type.Type;
 import com.google.common.base.MoreObjects;
 import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;
@@ -86,14 +84,12 @@ public class KuromojiUDF
     }
 
     @ScalarFunction("kuromoji_tokenize")
-    @TypeParameter("T")
-    @LiteralParameters("x")
+    @LiteralParameters({"x", "z"})
     @SqlType("array<varchar(x)>")
     public static Block kuromojiTokenize(
-            @TypeParameter("T") Type valueType,
             @SqlNullable @SqlType("varchar(x)") Slice sentence,
             @SqlType("varchar(x)") Slice mode,
-            @SqlType("array(T)") Block arrayBlock)
+            @SqlType("array<varchar(z)>") Block arrayBlock)
     {
         // ref: https://github.com/prestodb/presto/blob/4128cb5fefe534fd42d267481838f3adabeb4e7b/presto-main/src/main/java/com/facebook/presto/operator/scalar/ArrayElementAtFunction.java#L92-L106
         String modeString = mode.toStringUtf8();
