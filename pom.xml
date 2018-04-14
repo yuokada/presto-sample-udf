@@ -124,6 +124,7 @@
                 <version>2.5.1</version>
                 <configuration>
                     <preparationGoals>clean verify -DskipTests</preparationGoals>
+                    <tagNameFormat>{project.version}</tagNameFormat>
                 </configuration>
             </plugin>
 
