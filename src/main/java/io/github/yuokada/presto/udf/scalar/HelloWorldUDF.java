@@ -11,6 +11,10 @@ import static io.airlift.slice.Slices.utf8Slice;
 
 public class HelloWorldUDF
 {
+    private HelloWorldUDF()
+    {
+    }
+
     @Description("Hello World(UDF Practice)")
     @ScalarFunction("hello_world")
     @SqlType(StandardTypes.VARCHAR)

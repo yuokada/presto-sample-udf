@@ -14,7 +14,6 @@ import com.facebook.presto.spi.function.SqlNullable;
 import com.facebook.presto.spi.function.SqlType;
 import com.facebook.presto.spi.function.TypeParameter;
 import com.facebook.presto.spi.type.Type;
-import com.google.common.base.MoreObjects;
 import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;
 import io.airlift.slice.Slice;
@@ -30,6 +29,7 @@ import java.util.function.Predicate;
 
 import static com.facebook.presto.spi.StandardErrorCode.INVALID_FUNCTION_ARGUMENT;
 import static com.facebook.presto.spi.type.VarcharType.VARCHAR;
+import static com.google.common.base.MoreObjects.toStringHelper;
 import static io.airlift.slice.Slices.utf8Slice;
 
 public class KuromojiUDF
@@ -53,6 +53,10 @@ public class KuromojiUDF
             return t.getBaseForm();
         }
     };
+
+    private KuromojiUDF()
+    {
+    }
 
     @Description("Now Working.")
     @ScalarFunction("kuromoji_tokenize")
@@ -212,8 +216,7 @@ public class KuromojiUDF
         @Override
         public String toString()
         {
-            return MoreObjects
-                    .toStringHelper(this.getClass())
+            return toStringHelper(this.getClass())
                     .add("mode", mode)
                     .add("dictHashCode", dictHashCode)
                     .toString();
