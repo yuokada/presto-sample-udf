@@ -24,6 +24,7 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
@@ -39,6 +40,7 @@ public class KuromojiUDF
     // https://github.com/google/guava/wiki/CachesExplained
     private static final Cache<TokenizerKey, Tokenizer> cache = CacheBuilder.newBuilder()
             .maximumSize(32)
+            .expireAfterAccess(600, TimeUnit.SECONDS)
             .build();
     // https://hivemall.incubator.apache.org/userguide/misc/tokenizer.html#japanese-tokenizer
     private static final List<String> modes = Arrays.asList("normal", "search", "extended");
