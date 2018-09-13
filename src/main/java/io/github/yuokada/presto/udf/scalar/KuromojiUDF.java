@@ -6,7 +6,6 @@ import com.atilika.kuromoji.ipadic.Tokenizer;
 import com.facebook.presto.spi.PrestoException;
 import com.facebook.presto.spi.block.Block;
 import com.facebook.presto.spi.block.BlockBuilder;
-import com.facebook.presto.spi.block.BlockBuilderStatus;
 import com.facebook.presto.spi.function.Description;
 import com.facebook.presto.spi.function.LiteralParameters;
 import com.facebook.presto.spi.function.ScalarFunction;
@@ -35,7 +34,7 @@ import static io.airlift.slice.Slices.utf8Slice;
 
 public class KuromojiUDF
 {
-    private static final Block zeroBlock = VARCHAR.createBlockBuilder(new BlockBuilderStatus(), 0).build();
+    private static final Block zeroBlock = VARCHAR.createBlockBuilder(null, 0).build();
 
     // https://github.com/google/guava/wiki/CachesExplained
     private static final Cache<TokenizerKey, Tokenizer> cache = CacheBuilder.newBuilder()
@@ -116,7 +115,7 @@ public class KuromojiUDF
 
     private static Block kuromojiTokenize(String input, String modeString, Block arrayBlock)
     {
-        BlockBuilder blockBuilder = VARCHAR.createBlockBuilder(new BlockBuilderStatus(), input.length() / 4);
+        BlockBuilder blockBuilder = VARCHAR.createBlockBuilder(null, input.length() / 4);
 
         Tokenizer tokenizer = getTokenizerWithMandD(modeString, arrayBlock);
         tokenizer.tokenize(input).stream()
