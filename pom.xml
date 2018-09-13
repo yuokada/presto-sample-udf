@@ -12,7 +12,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <presto.version>0.188</presto.version>
+        <presto.version>0.210</presto.version>
         <slice.version>0.32</slice.version>
         <guava.version>21.0</guava.version>
         <io.airlift.log.version>0.163</io.airlift.log.version>
