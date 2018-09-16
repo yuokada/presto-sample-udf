@@ -2,6 +2,7 @@ package io.github.yuokada.presto.udf;
 
 import com.facebook.presto.spi.Plugin;
 import com.google.common.collect.ImmutableSet;
+import io.github.yuokada.presto.udf.scalar.HelloWorldScalaUDF;
 import io.github.yuokada.presto.udf.scalar.HelloWorldUDF;
 import io.github.yuokada.presto.udf.scalar.KuromojiUDF;
 
@@ -15,6 +16,7 @@ public class UdfPlugin
     {
         return ImmutableSet.<Class<?>>builder()
                 .add(HelloWorldUDF.class)
+                .add(HelloWorldScalaUDF.class)
                 .add(KuromojiUDF.class)
                 .build();
     }

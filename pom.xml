@@ -18,9 +18,9 @@
     <io.airlift.log.version>0.163</io.airlift.log.version>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
-        <scala.major.version>2.12</scala.major.version>
-        <scala.version>${scala.major.version}.0</scala.version>
-        <scala.maven.plugin.version>3.4.2</scala.maven.plugin.version>
+    <scala.major.version>2.12</scala.major.version>
+    <scala.version>${scala.major.version}.0</scala.version>
+    <scala.maven.plugin.version>3.4.2</scala.maven.plugin.version>
   </properties>
 
   <scm>
@@ -94,6 +94,14 @@
       <groupId>com.atilika.kuromoji</groupId>
       <artifactId>kuromoji-ipadic</artifactId>
       <version>0.9.0</version>
+    </dependency>
+
+    <!--scala-->
+    <dependency>
+      <groupId>org.scala-lang</groupId>
+      <artifactId>scala-compiler</artifactId>
+      <version>${scala.version}</version>
+      <scope>provided</scope>
     </dependency>
   </dependencies>
 
@@ -182,15 +190,30 @@
         </executions>
       </plugin>
 
-            <plugin>
-                <groupId>net.alchim31.maven</groupId>
-                <artifactId>scala-maven-plugin</artifactId>
-                <version>3.4.2</version>
-                <configuration>
-                    <target>1.8</target>
-                    <sourceDir>src/main/scala</sourceDir>
-                </configuration>
-            </plugin>
+      <!--  http://davidb.github.io/scala-maven-plugin/example_java.html  -->
+      <!--  http://davidb.github.io/scala-maven-plugin/example_incremental.html  -->
+      <plugin>
+        <groupId>net.alchim31.maven</groupId>
+        <artifactId>scala-maven-plugin</artifactId>
+        <version>${scala.maven.plugin.version}</version>
+        <executions>
+          <execution>
+            <id>scala-compile-first</id>
+            <phase>process-resources</phase>
+            <goals>
+              <goal>add-source</goal>
+              <goal>compile</goal>
+            </goals>
+          </execution>
+          <execution>
+            <id>scala-test-compile</id>
+            <phase>process-test-resources</phase>
+            <goals>
+              <goal>testCompile</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
 
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
