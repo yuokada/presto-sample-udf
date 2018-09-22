@@ -41,14 +41,4 @@ public class HelloWorldScalaUDFTest
         assertFunction("translate('translate', 'rnlt', '123')", VARCHAR, "1a2s3ae");
         assertFunction("translate('translate', 'rnlt', '1234')", VARCHAR, "41a2s3a4e");
     }
-
-    @Test(invocationCount = 100)
-    public void testTranslatePerformance()
-            throws Exception
-    {
-        assertFunction("translate('foobarbaz', 'fb', 'FB')", VARCHAR, "FooBarBaz");
-        assertFunction("translate('translate', 'rnlt', '123')", VARCHAR, "1a2s3ae");
-        assertFunction("translate('translate', 'rnlt', '1234')", VARCHAR, "41a2s3a4e");
-    }
-
 }

@@ -26,14 +26,4 @@ public class HelloWorldUDFTest
         assertFunction("hello_world('')", VARCHAR, "Hello World");
         assertFunction("hello_world('John')", VARCHAR, "Hello John");
     }
-
-    @Test(invocationCount = 100)
-    public void testTranslatePerformance()
-            throws Exception
-    {
-        assertFunction("translatej('foobarbaz', 'fb', 'FB')", VARCHAR, "FooBarBaz");
-        assertFunction("translatej('translate', 'rnlt', '123')", VARCHAR, "1a2s3ae");
-        assertFunction("translatej('translate', 'rnlt', '1234')", VARCHAR, "41a2s3a4e");
-    }
-
 }
