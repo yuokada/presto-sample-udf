@@ -38,7 +38,7 @@ object HelloWorldScalaUDF {
           case c if converter.contains(c) => converter(c)
           case c if excludes.contains(c) => ""
           case c => c
-        } mkString
+        } .mkString
       )
     }
   }
