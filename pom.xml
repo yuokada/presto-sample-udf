@@ -3,7 +3,7 @@
 
   <groupId>io.github.yuokada</groupId>
   <artifactId>presto-sample-udf</artifactId>
-  <version>1.4</version>
+  <version>1.5-SNAPSHOT</version>
   <description>Presto - Example UDF Plugin</description>
   <packaging>jar</packaging>
 
@@ -26,7 +26,7 @@
   <scm>
     <connection>scm:git:https://github.com/yuokada/presto-sample-udf.git</connection>
     <url>https://github.com/yuokada/presto-sample-udf</url>
-    <tag>1.4</tag>
+    <tag>HEAD</tag>
   </scm>
 
   <dependencies>
