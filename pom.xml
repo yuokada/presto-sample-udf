@@ -214,7 +214,13 @@
           </execution>
         </executions>
         <configuration>
+          <source>${maven.compiler.source}</source>
+          <target>${maven.compiler.target}</target>
+          <scalaVersion>${scala.version}</scalaVersion>
           <args>
+            <arg>-Xlint</arg>
+            <arg>-unchecked</arg>
+            <arg>-deprecation</arg>
             <arg>-feature</arg>
           </args>
         </configuration>
