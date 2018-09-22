@@ -26,15 +26,15 @@ object HelloWorldScalaUDF {
     if (target == null || target.toStringUtf8.isEmpty) {
       target
     } else {
-      val fromUtf8 = from.toStringUtf8
-      val converter = fromUtf8.distinct.zip(to.toStringUtf8).toMap
+      val fromUtf8 = from.toStringAscii
+      val converter = fromUtf8.distinct.zip(to.toStringAscii).toMap
       val excludes = if (to.length <= fromUtf8.length) {
         fromUtf8.substring(to.length).toSet
       } else {
         "".toSet
       }
       utf8Slice(
-        target.toStringUtf8.map {
+        target.toStringAscii.map {
           case c if converter.contains(c) => converter(c)
           case c if excludes.contains(c) => ""
           case c => c
