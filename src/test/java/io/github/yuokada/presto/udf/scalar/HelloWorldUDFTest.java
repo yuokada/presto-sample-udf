@@ -24,12 +24,6 @@ public class HelloWorldUDFTest
             throws Exception
     {
         assertFunction("hello_world('')", VARCHAR, "Hello World");
-    }
-
-    @Test
-    public void testHelloJohn()
-            throws Exception
-    {
         assertFunction("hello_world('John')", VARCHAR, "Hello John");
     }
 
