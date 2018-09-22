@@ -24,12 +24,21 @@ public class HelloWorldScalaUDFTest
             throws Exception
     {
         assertFunction("hello_worlds('')", VARCHAR, "Hello World from scala");
+        assertFunction("hello_worlds('John')", VARCHAR, "Hello John from scala");
     }
 
     @Test
-    public void testHelloJohn()
+    public void testTranslate()
             throws Exception
     {
-        assertFunction("hello_worlds('John')", VARCHAR, "Hello John from scala");
+        assertFunction("translate('123def', '123',   'abc')", VARCHAR, "abcdef");
+        assertFunction("translate('123def', '123',   'ab')", VARCHAR, "abdef");
+        assertFunction("translate('123def', '12',    'abc')", VARCHAR, "ab3def");
+        assertFunction("translate('123def', '1231',  'abcd')", VARCHAR, "abcdef");
+        assertFunction("translate('hello',  'hello', 'hi')", VARCHAR, "hi");
+
+        assertFunction("translate('foobarbaz', 'fb', 'FB')", VARCHAR, "FooBarBaz");
+        assertFunction("translate('translate', 'rnlt', '123')", VARCHAR, "1a2s3ae");
+        assertFunction("translate('translate', 'rnlt', '1234')", VARCHAR, "41a2s3a4e");
     }
 }
