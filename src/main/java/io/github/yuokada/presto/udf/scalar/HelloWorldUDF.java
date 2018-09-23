@@ -40,11 +40,11 @@ public class HelloWorldUDF
     @ScalarFunction("translatej")
     @SqlType(VARCHAR)
     public static Slice translate(
-            @SqlNullable @SqlType(VARCHAR) Slice string,
+            @SqlNullable @SqlType(VARCHAR) Slice target,
             @SqlType(VARCHAR) Slice from,
             @SqlType(VARCHAR) Slice to)
     {
-        if (string == null) {
+        if (target == null) {
             return null;
         }
         Map<Integer, Integer> replacementMap = new HashMap<Integer, Integer>();
@@ -71,16 +71,16 @@ public class HelloWorldUDF
                 deletionSet.add(fromCodePoint);
             }
         }
-        String input = string.toStringAscii();
+        String targetAscii = target.toStringAscii();
         StringBuilder sb = new StringBuilder();
-        ByteBuffer inputBytes = ByteBuffer.wrap(input.getBytes(), 0, input.length());
-        while (inputBytes.hasRemaining()) {
-            int inputCodePoint = inputBytes.get();
-            if (deletionSet.contains(inputCodePoint)) {
+        ByteBuffer targetBytes = ByteBuffer.wrap(targetAscii.getBytes(), 0, targetAscii.length());
+        while (targetBytes.hasRemaining()) {
+            int targetCodepoint = targetBytes.get();
+            if (deletionSet.contains(targetCodepoint)) {
                 continue;
             }
-            Integer replacementCodePoint = replacementMap.get(inputCodePoint);
-            char[] charArray = Character.toChars((replacementCodePoint != null) ? replacementCodePoint : inputCodePoint);
+            Integer replacementCodePoint = replacementMap.get(targetCodepoint);
+            char[] charArray = Character.toChars((replacementCodePoint != null) ? replacementCodePoint : targetCodepoint);
             sb.append(charArray);
         }
         String answer = sb.toString();
