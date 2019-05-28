@@ -4,6 +4,7 @@ import com.google.common.collect.ImmutableSet;
 import io.github.yuokada.presto.udf.scalar.HelloWorldScalaUDF;
 import io.github.yuokada.presto.udf.scalar.HelloWorldUDF;
 import io.github.yuokada.presto.udf.scalar.KuromojiUDF;
+import io.github.yuokada.presto.udf.scalar.SleepUDF;
 import io.prestosql.spi.Plugin;
 
 import java.util.Set;
@@ -18,6 +19,7 @@ public class UdfPlugin
                 .add(HelloWorldUDF.class)
                 .add(HelloWorldScalaUDF.class)
                 .add(KuromojiUDF.class)
+                .add(SleepUDF.class)
                 .build();
     }
 }
