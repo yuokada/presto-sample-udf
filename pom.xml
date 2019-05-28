@@ -12,7 +12,7 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <presto.version>0.210</presto.version>
+    <presto.version>311</presto.version>
     <slice.version>0.32</slice.version>
     <guava.version>23.6-jre</guava.version>
     <io.airlift.log.version>0.163</io.airlift.log.version>
@@ -20,7 +20,7 @@
     <maven.compiler.target>1.8</maven.compiler.target>
     <scala.major.version>2.12</scala.major.version>
     <scala.version>${scala.major.version}.0</scala.version>
-    <scala.maven.plugin.version>3.4.2</scala.maven.plugin.version>
+    <scala.maven.plugin.version>3.4.6</scala.maven.plugin.version>
   </properties>
 
   <scm>
@@ -31,14 +31,14 @@
 
   <dependencies>
     <dependency>
-      <groupId>com.facebook.presto</groupId>
+      <groupId>io.prestosql</groupId>
       <artifactId>presto-spi</artifactId>
       <version>${presto.version}</version>
       <scope>provided</scope>
     </dependency>
 
     <dependency>
-      <groupId>com.facebook.presto</groupId>
+      <groupId>io.prestosql</groupId>
       <artifactId>presto-main</artifactId>
       <version>${presto.version}</version>
     </dependency>
@@ -70,14 +70,14 @@
     </dependency>
 
     <dependency>
-      <groupId>com.facebook.presto</groupId>
+      <groupId>io.prestosql</groupId>
       <artifactId>presto-tests</artifactId>
       <version>${presto.version}</version>
       <scope>test</scope>
     </dependency>
 
     <dependency>
-      <groupId>com.facebook.presto</groupId>
+      <groupId>io.prestosql</groupId>
       <artifactId>presto-main</artifactId>
       <version>${presto.version}</version>
       <type>test-jar</type>
