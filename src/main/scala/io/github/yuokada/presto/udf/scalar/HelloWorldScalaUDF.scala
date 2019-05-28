@@ -1,9 +1,9 @@
 package io.github.yuokada.presto.udf.scalar
 
-import com.facebook.presto.spi.`type`.StandardTypes
-import com.facebook.presto.spi.function.{Description, ScalarFunction, SqlNullable, SqlType}
 import io.airlift.slice.Slice
 import io.airlift.slice.Slices.utf8Slice
+import io.prestosql.spi.`type`.StandardTypes
+import io.prestosql.spi.function.{Description, ScalarFunction, SqlNullable, SqlType}
 
 object HelloWorldScalaUDF {
 

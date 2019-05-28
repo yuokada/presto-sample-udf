@@ -1,11 +1,11 @@
 package io.github.yuokada.presto.udf.scalar;
 
-import com.facebook.presto.spi.function.Description;
-import com.facebook.presto.spi.function.ScalarFunction;
-import com.facebook.presto.spi.function.SqlNullable;
-import com.facebook.presto.spi.function.SqlType;
 import io.airlift.slice.Slice;
 import io.airlift.slice.Slices;
+import io.prestosql.spi.function.Description;
+import io.prestosql.spi.function.ScalarFunction;
+import io.prestosql.spi.function.SqlNullable;
+import io.prestosql.spi.function.SqlType;
 
 import java.nio.ByteBuffer;
 import java.util.HashMap;
@@ -13,8 +13,8 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-import static com.facebook.presto.spi.type.StandardTypes.VARCHAR;
 import static io.airlift.slice.Slices.utf8Slice;
+import static io.prestosql.spi.type.StandardTypes.VARCHAR;
 
 public class HelloWorldUDF
 {

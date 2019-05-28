@@ -1,9 +1,9 @@
 package io.github.yuokada.presto.udf.scalar;
 
-import com.facebook.presto.operator.scalar.AbstractTestFunctions;
-import com.facebook.presto.spi.type.ArrayType;
-import com.facebook.presto.spi.type.VarcharType;
 import com.google.common.collect.ImmutableList;
+import io.prestosql.operator.scalar.AbstractTestFunctions;
+import io.prestosql.spi.type.ArrayType;
+import io.prestosql.spi.type.VarcharType;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
