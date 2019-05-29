@@ -8,6 +8,10 @@ import static io.prestosql.spi.type.StandardTypes.INTEGER;
 
 public class SleepUDF
 {
+    private SleepUDF()
+    {
+    }
+
     @Description("Sleep n seconds")
     @ScalarFunction("sleep")
     @SqlType(INTEGER)
