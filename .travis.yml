@@ -4,7 +4,8 @@ language: java
 #     - master
 sudo: false
 jdk:
-  - oraclejdk8
+  # - oraclejdk8
+  - openjdk8
 # see: https://docs.travis-ci.com/user/caching/
 cache:
   directories:
