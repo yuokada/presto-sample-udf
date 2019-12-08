@@ -1,5 +1,5 @@
 # presto-sample-udf
-[![Build Status](https://travis-ci.org/yuokada/presto-sample-udf.svg?branch=master)](https://travis-ci.org/yuokada/presto-sample-udf)  
+[![Build Status](https://github.com/yuokada/presto-sample-udf/workflows/Java%20CI/badge.svg)](https://github.com/yuokada/presto-sample-udf/actions)
 Sample UDF Plugin for Presto
 
 ## How to start Presto UDF
