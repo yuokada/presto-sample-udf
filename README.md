@@ -4,9 +4,8 @@ Sample UDF Plugin for Presto
 
 ## How to start Presto UDF
 
-1. Read these documents.  
-   - [10\.1\. SPI Overview — Presto 0\.180 Documentation](https://prestodb.io/docs/current/develop/spi-overview.html)
-   - [10\.5\. Functions — Presto 0\.180 Documentation](https://prestodb.io/docs/current/develop/functions.html)
+Read the [SPI Overview](https://prestosql.io/docs/current/develop/spi-overview.html)
+and [Functions](https://prestosql.io/docs/current/develop/functions.html) documentation.
    
 ## Build
 
