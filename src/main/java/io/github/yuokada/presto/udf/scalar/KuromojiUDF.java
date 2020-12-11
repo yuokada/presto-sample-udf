@@ -65,11 +65,10 @@ public class KuromojiUDF
     @SqlType("array<varchar(x)>")
     public static Block kuromojiTokenize(@SqlNullable @SqlType("varchar(x)") Slice sentence)
     {
-        String input = sentence.toStringUtf8();
-        if (sentence == null || input.isEmpty()) {
+        if (sentence == null || sentence.length() == 0) {
             return zeroBlock;
         }
-
+        String input = sentence.toStringUtf8();
         return kuromojiTokenize(input, "normal", zeroBlock);
     }
 
@@ -83,10 +82,10 @@ public class KuromojiUDF
             throw new PrestoException(INVALID_FUNCTION_ARGUMENT, "Invalid mode value: " + modeString);
         }
 
-        String input = sentence.toStringUtf8();
-        if (sentence == null || input.isEmpty()) {
+        if (sentence == null || sentence.length() == 0) {
             return zeroBlock;
         }
+        String input = sentence.toStringUtf8();
         return kuromojiTokenize(input, modeString, zeroBlock);
     }
 
@@ -106,10 +105,10 @@ public class KuromojiUDF
             throw new PrestoException(INVALID_FUNCTION_ARGUMENT, "Invalid mode value: " + modeString);
         }
 
-        String input = sentence.toStringUtf8();
-        if (sentence == null || input.isEmpty()) {
+        if (sentence == null || sentence.length() == 0) {
             return zeroBlock;
         }
+        String input = sentence.toStringUtf8();
         return kuromojiTokenize(input, modeString, arrayBlock);
     }
 
@@ -138,14 +137,14 @@ public class KuromojiUDF
      */
     private static Tokenizer getTokenizerWithMandD(String mode, Block userDictionary)
     {
-        StringBuffer dictionaryBuffer = new StringBuffer();
+        StringBuilder dictionaryBuffer = new StringBuilder();
         int position = userDictionary.getPositionCount();
         List<String> words = new ArrayList<>();
         for (int i = 0; i < position; i++) {
             String entry = VARCHAR.getSlice(userDictionary, i).toStringUtf8();
             // NOTE: 単語をwordsに追加
             words.add(entry.substring(0, entry.indexOf(",")));
-            dictionaryBuffer.append(entry + "\n");
+            dictionaryBuffer.append(entry).append("\n");
         }
 
         TokenizerKey key = new TokenizerKey(mode, words.hashCode());
@@ -184,8 +183,8 @@ public class KuromojiUDF
 
     private static class TokenizerKey
     {
-        private static String mode;
-        private static int dictHashCode;
+        private final String mode;
+        private final int dictHashCode;
 
         public TokenizerKey(String mode, int dictHashCode)
         {
